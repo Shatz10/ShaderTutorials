@@ -27,7 +27,7 @@
 			#pragma fragment frag
 
 			#pragma multi_compile _SAMPLES_LOW _SAMPLES_MEDIUM _SAMPLES_HIGH
-			#pragma shader_feature GAUSS
+			// #pragma shader_feature GAUSS
 
 			//texture and transforms of the texture
 			sampler2D _MainTex;

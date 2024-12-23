@@ -58,6 +58,7 @@
 
 			float3 modifiedNormal = cross(modifiedTangent, modifiedBitangent);
 			data.normal = normalize(modifiedNormal);
+			
 			data.vertex = modifiedPos;
 		}
 

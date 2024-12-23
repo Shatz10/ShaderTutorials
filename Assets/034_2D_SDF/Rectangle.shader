@@ -33,9 +33,9 @@
 
             float scene(float2 position) {
                 float2 circlePosition = position;
-                circlePosition = rotate(circlePosition, _Time.y * 0.5);
-                circlePosition = translate(circlePosition, float2(2, 0));
-                float sceneDistance = rectangle(circlePosition, float2(1, 2));
+                // circlePosition = rotate(circlePosition, _Time.y * 0.5);
+                // circlePosition = translate(circlePosition, float2(2, 0));
+                float sceneDistance = rectangle(circlePosition, float2(2, 2));
                 return sceneDistance;
             }
 

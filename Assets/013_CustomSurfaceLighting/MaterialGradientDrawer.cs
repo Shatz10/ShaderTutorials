@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+#if UNITY_EDITOR
 public class MaterialGradientDrawer : MaterialPropertyDrawer {
 	private static Dictionary<(int, string), Gradient> knownGradients = new Dictionary<(int, string), Gradient>();
 
@@ -78,7 +79,7 @@ public class MaterialGradientDrawer : MaterialPropertyDrawer {
 					}
 
 					if (textureAsset.width != resolution) {
-						textureAsset.Resize(resolution, 1);
+						textureAsset.Reinitialize(resolution, 1);
 					}
 
 					textureAsset.name = fullAssetName;
@@ -147,7 +148,7 @@ public class MaterialGradientDrawer : MaterialPropertyDrawer {
 			}
 
 			if (textureAsset.width != resolution) {
-				textureAsset.Resize(resolution, 1);
+				textureAsset.Reinitialize(resolution, 1);
 			}
 
 			string fullAssetName = textureName + Encode(currentGradient);
@@ -251,3 +252,4 @@ public class MaterialGradientDrawer : MaterialPropertyDrawer {
 		}
 	}
 }
+#endif

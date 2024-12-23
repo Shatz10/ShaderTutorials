@@ -8,8 +8,11 @@
 
 	SubShader{
 		//the material is completely non-transparent and is rendered at the same time as the other opaque geometry
-		Tags{ "RenderType"="Opaque" "Queue"="Geometry"}
+		Tags{ "RenderType"="Opaque" "Queue"="Geometry" }
 
+//		Blend SrcAlpha OneMinusSrcAlpha
+//		ZWrite off
+		
 		Pass{
 			CGPROGRAM
 
@@ -60,7 +63,8 @@
 				//read colors from textures
 				fixed4 main_color = tex2D(_MainTex, main_uv);
 				fixed4 secondary_color = tex2D(_SecondaryTex, secondary_uv);
-
+				// secondary_color.a = 0;
+				
 				//interpolate between the colors
 				fixed4 col = lerp(main_color, secondary_color, _Blend);
 				return col;

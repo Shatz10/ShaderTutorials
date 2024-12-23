@@ -21,6 +21,7 @@
 		//fullforwardshadows makes sure unity adds the shadow passes the shader might need
 		#pragma surface surf Standard fullforwardshadows
 		#pragma target 3.0
+		#pragma enable_d3d11_debug_symbols 
 
 		sampler2D _MainTex;
 		fixed4 _Color;

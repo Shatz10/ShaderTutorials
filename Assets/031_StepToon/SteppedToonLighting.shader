@@ -34,7 +34,7 @@
             // make the lighting a hard cut
             float towardsLightChange = fwidth(towardsLight);
             float lightIntensity = smoothstep(0, towardsLightChange, towardsLight);
-
+  
         #ifdef USING_DIRECTIONAL_LIGHT
             //for directional lights, get a hard vut in the middle of the shadow attenuation
             float attenuationChange = fwidth(shadowAttenuation) * 0.5;
@@ -45,7 +45,7 @@
             float shadow = smoothstep(0, attenuationChange, shadowAttenuation);
         #endif
             lightIntensity = lightIntensity * shadow;
-
+  
             //calculate shadow color and mix light and shadow based on the light. Then taint it based on the light color
             float3 shadowColor = s.Albedo * _ShadowTint;
             float4 color;

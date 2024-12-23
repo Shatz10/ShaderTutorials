@@ -25,6 +25,7 @@
 
 			struct appdata{
 				float4 vertex : POSITION;
+				// float2 uv : TEXCOORD0;
 			};
 
 			struct v2f{
@@ -39,7 +40,10 @@
 				//calculate world position of vertex
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				//change UVs based on tiling and offset of texture
+				// 使用世界坐标系的位置来计算uv，当物体移动和变形时，uv贴图也会跟着移动
 				o.uv = TRANSFORM_TEX(worldPos.xz, _MainTex);
+				// 使用模型原始坐标来计算uv，贴图显示不会因为坐标改变而改变
+				// o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				return o;
 			}
 
