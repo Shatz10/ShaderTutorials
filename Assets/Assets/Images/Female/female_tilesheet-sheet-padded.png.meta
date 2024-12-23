@@ -75,7 +75,7 @@ TextureImporter:
       213: 2826872377755232932
     second: female_tilesheet-sheet-padded_23
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -95,6 +95,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -103,12 +105,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -126,9 +128,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -144,6 +151,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -671,6 +702,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      female_tilesheet-sheet-padded_0: 1747016873835291538
+      female_tilesheet-sheet-padded_1: -6974155858140932490
+      female_tilesheet-sheet-padded_10: 2657333010297446783
+      female_tilesheet-sheet-padded_11: -5433344877756248090
+      female_tilesheet-sheet-padded_12: -3036655655864255793
+      female_tilesheet-sheet-padded_13: 1662003863310902646
+      female_tilesheet-sheet-padded_14: -1342620177666691040
+      female_tilesheet-sheet-padded_15: 907922999717989462
+      female_tilesheet-sheet-padded_16: -3153067217439892263
+      female_tilesheet-sheet-padded_17: -3528810556698085301
+      female_tilesheet-sheet-padded_18: 4935634440037491756
+      female_tilesheet-sheet-padded_19: 8135232057207212860
+      female_tilesheet-sheet-padded_2: -2673038632875062909
+      female_tilesheet-sheet-padded_20: 8597331296672641808
+      female_tilesheet-sheet-padded_21: 3876925922809664160
+      female_tilesheet-sheet-padded_22: -15517567688721539
+      female_tilesheet-sheet-padded_23: 2826872377755232932
+      female_tilesheet-sheet-padded_3: 5814913383826159575
+      female_tilesheet-sheet-padded_4: -3169665352032944448
+      female_tilesheet-sheet-padded_5: -2924189020093103084
+      female_tilesheet-sheet-padded_6: -5177785691977120746
+      female_tilesheet-sheet-padded_7: -7139828160633086559
+      female_tilesheet-sheet-padded_8: -1064504310409690149
+      female_tilesheet-sheet-padded_9: -5829960653205103303
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Chessboard
   m_Shader: {fileID: 4800000, guid: e9f64310e80e06846b799815967549c1, type: 3}
   m_ShaderKeywords: 
@@ -66,7 +67,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Scale: 0.25
+    - _Scale: 3.46
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -75,5 +76,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EvenColor: {r: 0.413, g: 0, b: 0.31930068, a: 1}
-    - _OddColor: {r: 0.706, g: 1, b: 0.9774755, a: 1}
+    - _EvenColor: {r: 0.9811321, g: 0.9765041, b: 0.9800743, a: 1}
+    - _OddColor: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 1}
+  m_BuildTextureStacks: []

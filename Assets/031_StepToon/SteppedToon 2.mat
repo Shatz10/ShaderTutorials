@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: SteppedToon 2
   m_Shader: {fileID: 4800000, guid: 54afc963a52a4b14aa31b8a6ce48e18f, type: 3}
   m_ShaderKeywords: 
@@ -85,3 +86,4 @@ Material:
     - _SpecularFalloff: {r: 0.21, g: 0.21, b: 0.21, a: 1}
     - _SpecularOverlay: {r: 1, g: 0.0141509175, b: 0.70874196, a: 1}
     - _SpecularTint: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

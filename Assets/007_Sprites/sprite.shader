@@ -46,6 +46,7 @@
 				o.position = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.color = v.color;
+				// o.color = fixed4(1, 1, 0, 1);
 				return o;
 			}
 
