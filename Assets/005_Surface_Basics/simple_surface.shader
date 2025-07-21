@@ -26,11 +26,17 @@
 		};
 
 		void surf (Input i, inout SurfaceOutputStandard o) {
-			fixed4 col = tex2D(_MainTex, i.uv_MainTex);
+			// 用主纹理和 UV 坐标采样颜色
+			fixed4 col = tex2D(_MainTex, i.uv_MainTex); // 见上面注释2、3
+			// 乘以 Tint 色
 			col *= _Color;
-			o.Albedo = col.rgb;
+			// 把结果赋值给 Albedo（基础色）
+			o.Albedo = col.rgb; // 见上面注释1
+			// 金属度：控制表面是金属还是非金属，1为完全金属，0为非金属
 			o.Metallic = _Metallic;
+			// 光滑度：控制表面高光/反射的锐利程度，1为非常光滑（镜面），0为粗糙
 			o.Smoothness = _Smoothness;
+			// 自发光：让物体自己发光，不受光照影响
 			o.Emission = _Emission;
 		}
 		ENDCG

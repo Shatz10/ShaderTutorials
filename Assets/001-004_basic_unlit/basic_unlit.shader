@@ -3,6 +3,8 @@
 	Properties{
 		_Color ("Tint", Color) = (0, 0, 0, 1)
 		_MainTex ("Texture", 2D) = "white" {}
+		// float4 _MainTex_ST; // （原有，已被自定义参数替代）
+		_MyTexST ("My Tex ST", Vector) = (1,1,0,0) // 新增：自定义UV变换参数
 	}
 
 	SubShader{
@@ -21,7 +23,8 @@
 
 			//texture and transforms of the texture
 			sampler2D _MainTex;
-			float4 _MainTex_ST;
+			// float4 _MainTex_ST; // （原有，已被自定义参数替代）
+			float4 _MyTexST; // 新增：自定义UV变换参数
 
 			//tint of the texture
 			fixed4 _Color;
@@ -44,7 +47,8 @@
 				//convert the vertex positions from object space to clip space so they can be rendered correctly
 				o.position = UnityObjectToClipPos(v.vertex);
 				//apply the texture transforms to the UV coordinates and pass them to the v2f struct
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				// o.uv = TRANSFORM_TEX(v.uv, _MainTex); // （原有，已被自定义参数替代）
+				o.uv = v.uv * _MyTexST.xy + _MyTexST.zw; // 新增：用自定义参数控制UV
 				return o;
 			}
 
