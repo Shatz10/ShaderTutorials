@@ -7,6 +7,10 @@
 	SubShader{
 		Tags{ "RenderType"="Transparent" "Queue"="Transparent"}
 
+		// 启用混合模式，实现半透明效果：
+		// SrcAlpha 表示源颜色的 alpha 值（当前像素的透明度）
+		// OneMinusSrcAlpha 表示 1 - 源颜色的 alpha 值（背景保留的比例）
+		// 最终颜色 = 源颜色 * 源Alpha + 背景颜色 * (1 - 源Alpha)
 		Blend SrcAlpha OneMinusSrcAlpha
 		ZWrite off
 

@@ -13,6 +13,7 @@
 		Blend SrcAlpha OneMinusSrcAlpha
 
 		ZWrite off
+		// 由于是2D游戏，所以不需要裁剪
 		Cull off
 
 		Pass{
@@ -53,6 +54,7 @@
 			fixed4 frag(v2f i) : SV_TARGET{
 				fixed4 col = tex2D(_MainTex, i.uv);
 				col *= _Color;
+				// i.color 是顶点颜色, 也即是SpriteRenderer的Color
 				col *= i.color;
 				return col;
 			}
