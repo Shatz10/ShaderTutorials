@@ -43,9 +43,12 @@
 		};
 
 		void vert(inout appdata_full data){
+			// Unity 将时间_Time作为 4 维向量自动传递给所有着色器，向量的第一个分量是时间除以 20，
+			// 第二个分量只是时间（以秒为单位），第三个是时间乘以 2，第四个包含时间乘以 3
 			float4 modifiedPos = data.vertex;
 			modifiedPos.y += sin(data.vertex.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
-			
+			// 上面改变了顶点位置，但没有改变法线，会导致显示错误，因此需要重新计算法线
+			// 计算切线和副切线
 			float3 posPlusTangent = data.vertex + data.tangent * 0.01;
 			posPlusTangent.y += sin(posPlusTangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
 

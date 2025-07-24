@@ -24,6 +24,7 @@ public class PolygonController : MonoBehaviour {
 		if(_mat == null)
 			_mat = GetComponent<Renderer>().sharedMaterial;
 		
+		// unity API 只允许我们传递 4d 向量，而 1000 可变长度的原因是，正如我之前提到的，着色器不支持动态数组长度
 		//allocate and fill array to pass
 		Vector4[] vec4Corners = new Vector4[1000];
 		for(int i=0;i<corners.Length;i++){
