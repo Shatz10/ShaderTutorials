@@ -43,12 +43,13 @@
 		};
 
 		void vert(inout appdata_full data){
-			// 复制当前顶点位置
+			// Unity 将时间_Time作为 4 维向量自动传递给所有着色器，向量的第一个分量是时间除以 20，
+			// 第二个分量只是时间（以秒为单位），第三个是时间乘以 2，第四个包含时间乘以 3
 			float4 modifiedPos = data.vertex;
 			// 用正弦函数让顶点的 y 坐标随 x 坐标和时间变化，实现波浪效果
 			modifiedPos.y += sin(data.vertex.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
-			
-			// 计算沿切线方向微小偏移后的顶点位置
+			// 上面改变了顶点位置，但没有改变法线，会导致显示错误，因此需要重新计算法线
+			// 计算切线和副切线
 			float3 posPlusTangent = data.vertex + data.tangent * 0.01;
 			// 对偏移后的位置同样进行波浪扰动
 			posPlusTangent.y += sin(posPlusTangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
