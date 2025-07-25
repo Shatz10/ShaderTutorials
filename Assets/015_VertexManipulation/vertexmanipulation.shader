@@ -43,22 +43,32 @@
 		};
 
 		void vert(inout appdata_full data){
+			// 复制当前顶点位置
 			float4 modifiedPos = data.vertex;
+			// 用正弦函数让顶点的 y 坐标随 x 坐标和时间变化，实现波浪效果
 			modifiedPos.y += sin(data.vertex.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
 			
+			// 计算沿切线方向微小偏移后的顶点位置
 			float3 posPlusTangent = data.vertex + data.tangent * 0.01;
+			// 对偏移后的位置同样进行波浪扰动
 			posPlusTangent.y += sin(posPlusTangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
 
+			// 通过法线和切线叉积得到副切线（bitangent）
 			float3 bitangent = cross(data.normal, data.tangent);
+			// 计算沿副切线微小偏移后的顶点位置
 			float3 posPlusBitangent = data.vertex + bitangent * 0.01;
+			// 对副切线偏移后的位置同样进行波浪扰动
 			posPlusBitangent.y += sin(posPlusBitangent.x * _Frequency + _Time.y * _AnimationSpeed) * _Amplitude;
 
+			// 得到扰动后切线和副切线的方向向量
 			float3 modifiedTangent = posPlusTangent - modifiedPos;
 			float3 modifiedBitangent = posPlusBitangent - modifiedPos;
 
+			// 用扰动后的切线和副切线重新计算法线，实现法线随顶点波动而动态变化
 			float3 modifiedNormal = cross(modifiedTangent, modifiedBitangent);
 			data.normal = normalize(modifiedNormal);
 			
+			// 把最终的顶点位置写回，完成顶点的波动变形
 			data.vertex = modifiedPos;
 		}
 

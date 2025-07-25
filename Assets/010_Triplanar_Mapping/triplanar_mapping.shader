@@ -43,13 +43,18 @@
 				//calculate world position of vertex
 				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				o.worldPos = worldPos.xyz;
-				//calculate world normal
+				// 法线只受旋转和缩放影响，不受位移影响，所以只取4x4矩阵的前3x3部分（旋转和缩放），忽略位移部分。
+				// 这样可以正确地将法线从物体空间变换到世界空间。
+				// 理论上，法线变换应使用ObjectToWorld的逆转置矩阵（Inverse Transpose），以保证在有非均匀缩放时法线方向正确。
+				// 但如果模型没有非均匀缩放（只有旋转和平移），此时逆矩阵（unity_WorldToObject）和逆转置矩阵效果一样，所以直接用逆矩阵也能得到正确结果。
 				float3 worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
 				o.normal = normalize(worldNormal);
 				return o;
 			}
 
 			fixed4 frag(v2f i) : SV_TARGET{
+				// return fixed4(i.normal.xyz, 1);
+				
 				//calculate UV coordinates for three projections
 				float2 uv_front = TRANSFORM_TEX(i.worldPos.xy, _MainTex);
 				float2 uv_side = TRANSFORM_TEX(i.worldPos.zy, _MainTex);
