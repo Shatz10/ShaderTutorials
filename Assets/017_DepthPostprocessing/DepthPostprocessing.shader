@@ -74,6 +74,7 @@
 
 				//calculate wave
 				float waveFront = step(depth, _WaveDistance);
+				// 平滑过渡，越靠近 a 越接近 0，越靠近 b 越接近 1
 				float waveTrail = smoothstep(_WaveDistance - _WaveTrail, _WaveDistance, depth);
 				float wave = waveFront * waveTrail;
 

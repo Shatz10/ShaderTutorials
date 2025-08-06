@@ -67,11 +67,12 @@
 
 				//get depth as distance from camera in units 
 				depth = depth * _ProjectionParams.z;
-
+				// 将法线从视图空间转换到世界空间，否则移动相机法线也会跟着改变
 				normal = mul((float3x3)_viewToWorld, normal);
 
 				float up = dot(float3(0,1,0), normal);
 				up = step(_upCutoff, up);
+				// up = 1.0;
 				float4 source = tex2D(_MainTex, i.uv);
 				float4 col = lerp(source, _topColor, up * _topColor.a);
 				return col;

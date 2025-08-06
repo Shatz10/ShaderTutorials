@@ -61,8 +61,10 @@
 			ENDCG
 		}
 
-		//The second pass where we render the outlines
+		// 第二个Pass：渲染轮廓
 		Pass{
+			// 通过剔除正面（Cull front）只渲染背面来创建轮廓效果
+			// 轮廓由"放大的背面"组成，剔除正面不会影响轮廓显示
 			Cull front
 
 			CGPROGRAM
