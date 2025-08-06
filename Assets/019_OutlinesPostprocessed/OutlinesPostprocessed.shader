@@ -61,21 +61,34 @@ Shader "Tutorial/019_OutlinesPostprocessed"
 				return o;
 			}
 
+			// 比较当前像素与相邻像素的深度和法线差异
+			// inout参数：深度轮廓和法线轮廓的累积值
+			// baseDepth/baseNormal：当前像素的深度和法线
+			// uv：当前像素的UV坐标
+			// offset：相邻像素的偏移量（如(1,0)表示右侧像素）
 			void Compare(inout float depthOutline, inout float normalOutline, 
 					float baseDepth, float3 baseNormal, float2 uv, float2 offset){
-				//read neighbor pixel
+				// 读取相邻像素的深度法线数据
 				float4 neighborDepthnormal = tex2D(_CameraDepthNormalsTexture, 
 						uv + _CameraDepthNormalsTexture_TexelSize.xy * offset);
 				float3 neighborNormal;
 				float neighborDepth;
+				// 解码深度法线纹理，提取深度和法线信息
 				DecodeDepthNormal(neighborDepthnormal, neighborDepth, neighborNormal);
+				// 将深度值转换为世界空间距离
 				neighborDepth = neighborDepth * _ProjectionParams.z;
 
+				// 计算深度差异（正值表示当前像素更近）
 				float depthDifference = baseDepth - neighborDepth;
+				// 累积深度轮廓值
 				depthOutline = depthOutline + depthDifference;
 
+				// 计算法线向量差异
 				float3 normalDifference = baseNormal - neighborNormal;
+				// 将3D向量差异转换为标量值（曼哈顿距离）|Δx| + |Δy| + |Δz|
+				// 这样可以高效地检测法线在任意方向上的变化
 				normalDifference = normalDifference.r + normalDifference.g + normalDifference.b;
+				// 累积法线轮廓值
 				normalOutline = normalOutline + normalDifference;
 			}
 
