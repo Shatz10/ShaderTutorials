@@ -17,6 +17,10 @@
 		//our surface shader function is called surf and we use our custom lighting model
 		//fullforwardshadows makes sure unity adds the shadow passes the shader might need
 		#pragma surface surf Custom fullforwardshadows
+
+		// 关闭自发光
+		// #pragma surface surf Standard fullforwardshadows
+
 		#pragma target 3.0
 
 		sampler2D _MainTex;
@@ -56,9 +60,22 @@
 			fixed4 col = tex2D(_MainTex, i.uv_MainTex);
 			col *= _Color;
 			o.Albedo = col.rgb;
-
+		
 			o.Emission = _Emission;
 		}
+
+		// 关闭自发光
+		// void surf (Input i, inout SurfaceOutputStandard o) {
+		// 	fixed4 col = tex2D(_MainTex, i.uv_MainTex);
+		// 	col *= _Color;
+		// 	o.Albedo = col.rgb;
+		// 	o.Emission = _Emission;
+		// }
+
+
+		// Lighting functions in general are very useful and powerful. One thing to keep in mind though is that they only work in forward rendering.
+		// When you switch your render mode to deferred you can still see the objects like you’re used to, but they can’t take advantage of deferred rendering
+		// (don’t worry about it and stick to forward rendering if you don’t know the difference).
 		ENDCG
 	}
 	FallBack "Standard"

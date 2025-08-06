@@ -48,10 +48,16 @@
 			}
 
 			//return 1 if a thing is left of the line, 0 if not
+			// 判断一个点是否在一条线的左侧，如果在左侧返回1，否则返回0
 			float isLeftOfLine(float2 pos, float2 linePoint1, float2 linePoint2){
 				//variables we need for our calculations
+				// 计算线段的方向向量，方向为从linePoint1指向linePoint2（即goal - start）
 				float2 lineDirection = linePoint2 - linePoint1;
+				// 将方向向量逆时针旋转90度，得到线的左侧法线
+				// 具体做法是交换x和y，并对新的x分量取负号
+				// 这样得到的lineNormal指向线的左侧（如果对y取负则指向右侧）
 				float2 lineNormal = float2(-lineDirection.y, lineDirection.x);
+				// 计算从linePoint1指向要测试点pos的向量
 				float2 toPos = pos - linePoint1;
 
 				//which side the tested position is on
